@@ -1,0 +1,13 @@
+export default {
+  async fetch(request) {
+    const country = request.cf.country;
+    
+    const allowedCountries = ['DE', 'AT', 'CH'];
+    
+    if (allowedCountries.includes(country)) {
+      return fetch(request); // pass through to real store
+    } else {
+      return new Response('Not Found', { status: 404 });
+    }
+  }
+}
